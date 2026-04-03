@@ -1,12 +1,219 @@
-﻿<!doctype html>
+﻿<!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>電気計算 学習アプリ</title>
+    <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <div class="app">
+      <!-- ─── ヘッダー ─── -->
+      <header class="app-header">
+        <div class="header-brand">
+          <div class="header-logo">
+            <!-- 電気アイコン（雷マーク） -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M13 2L4.09 12.45A1 1 0 005 14h6v8l8.91-10.45A1 1 0 0019 10h-6V2z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="header-title">第二種電気工事士</div>
+            <div class="header-sub">電気計算 学習アプリ</div>
+          </div>
+        </div>
+        <div class="header-streak" id="header-streak">1日連続</div>
+      </header>
+
+      <!-- ─── ナビゲーションタブ ─── -->
+      <nav class="nav-tabs">
+        <button class="nav-tab active" data-tab="home" onclick="App.switchTab('home')">
+          <span class="tab-icon">🏠</span>
+          <span class="tab-label">ホーム</span>
+        </button>
+        <button class="nav-tab" data-tab="quiz" onclick="App.switchTab('quiz')">
+          <span class="tab-icon">📝</span>
+          <span class="tab-label">過去問</span>
+        </button>
+        <button class="nav-tab" data-tab="formula" onclick="App.switchTab('formula')">
+          <span class="tab-icon">⚡</span>
+          <span class="tab-label">公式</span>
+        </button>
+        <button class="nav-tab" data-tab="vocab" onclick="App.switchTab('vocab')">
+          <span class="tab-icon">🃏</span>
+          <span class="tab-label">用語</span>
+        </button>
+        <button class="nav-tab" data-tab="wiring" onclick="App.switchTab('wiring')">
+          <span class="tab-icon">🔌</span>
+          <span class="tab-label">配線図</span>
+        </button>
+        <button class="nav-tab" data-tab="stats" onclick="App.switchTab('stats')">
+          <span class="tab-icon">📊</span>
+          <span class="tab-label">履歴</span>
+        </button>
+      </nav>
+
+      <!-- ════════════════════════════════════════
+           ホームセクション
+      ════════════════════════════════════════ -->
+      <section id="sec-home" class="section active">
+        <!-- 統計グリッド -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📖</div>
+            <div class="stat-label">累計解答数</div>
+            <div class="stat-val">
+              <span id="stat-today">0</span><span class="stat-unit">問</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-label">正答率</div>
+            <div class="stat-val"><span id="stat-acc">—</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-label">連続学習</div>
+            <div class="stat-val">
+              <span id="stat-streak">1</span><span class="stat-unit">日</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- カテゴリグリッド（上位4が自動反映される） -->
+        <div class="cat-grid">
+          <div class="cat-card" onclick="App.startCategory('第1章 直流回路')">
+            <div class="cat-thumb theory">⚡</div>
+            <div class="cat-name">第1章</div>
+            <div class="cat-count">問題数: 0問</div>
+            <div class="cat-bar"><div class="cat-fill theory" id="cat-fill-0" style="width:0%"></div></div>
+            <div class="cat-pct" id="cat-pct-0">—</div>
+          </div>
+
+          <div class="cat-card" onclick="App.startCategory('第2章 電流と磁気')">
+            <div class="cat-thumb design">🧲</div>
+            <div class="cat-name">第2章</div>
+            <div class="cat-count">問題数: 0問</div>
+            <div class="cat-bar"><div class="cat-fill design" id="cat-fill-1" style="width:0%"></div></div>
+            <div class="cat-pct" id="cat-pct-1">—</div>
+          </div>
+
+          <div class="cat-card" onclick="App.startCategory('第3章 静電気')">
+            <div class="cat-thumb tools">🧪</div>
+            <div class="cat-name">第3章</div>
+            <div class="cat-count">問題数: 0問</div>
+            <div class="cat-bar"><div class="cat-fill tools" id="cat-fill-2" style="width:0%"></div></div>
+            <div class="cat-pct" id="cat-pct-2">—</div>
+          </div>
+
+          <div class="cat-card" onclick="App.startCategory('第4章 交流回路')">
+            <div class="cat-thumb law">🌐</div>
+            <div class="cat-name">第4章</div>
+            <div class="cat-count">問題数: 0問</div>
+            <div class="cat-bar"><div class="cat-fill law" id="cat-fill-3" style="width:0%"></div></div>
+            <div class="cat-pct" id="cat-pct-3">—</div>
+          </div>
+        </div>
+
+        <!-- スタートボタン群 -->
+        <button class="start-btn" onclick="App.startRandom()">
+          ⚡ ランダム出題で学習開始
+        </button>
+        <div style="display:flex;gap:8px;margin-bottom:1.5rem">
+          <button class="btn" style="flex:1" onclick="App.startBookmarks()">🔖 ブックマークから</button>
+          <button class="btn" style="flex:1" onclick="App.startWeak()">💪 苦手問題を集中学習</button>
+        </div>
+
+        <!-- バッジ -->
+        <div class="recent-section">
+          <div class="section-heading">実績バッジ</div>
+          <div class="achievement-row" id="home-badges"></div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════
+           クイズセクション
+      ════════════════════════════════════════ -->
+      <section id="sec-quiz" class="section">
+        <div id="quiz-content"></div>
+      </section>
+
+      <!-- ════════════════════════════════════════
+           公式・計算セクション
+      ════════════════════════════════════════ -->
+      <section id="sec-formula" class="section">
+        <!-- オームの法則 電卓 -->
+        <div class="calc-card">
+          <div class="calc-title">⚡ オームの法則 電卓（2つ入力で残り1つを計算）</div>
+          <div class="calc-row">
+            <div class="calc-label">電圧 V</div>
+            <input class="calc-input" type="number" id="calc-v" placeholder="例: 100" />
+            <div class="calc-unit">V</div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-label">電流 I</div>
+            <input class="calc-input" type="number" id="calc-i" placeholder="例: 10" />
+            <div class="calc-unit">A</div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-label">抵抗 R</div>
+            <input class="calc-input" type="number" id="calc-r" placeholder="例: 5" />
+            <div class="calc-unit">Ω</div>
+          </div>
+          <div class="calc-result" id="calc-ohm-result">2つの値を入力してください</div>
+        </div>
+
+        <!-- 電力量 電卓 -->
+        <div class="calc-card">
+          <div class="calc-title">🔋 電力量 計算</div>
+          <div class="calc-row">
+            <div class="calc-label">電力 P</div>
+            <input class="calc-input" type="number" id="calc-p" placeholder="例: 500" />
+            <div class="calc-unit">W</div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-label">時間 t</div>
+            <input class="calc-input" type="number" id="calc-lp" placeholder="例: 3" />
+            <div class="calc-unit">h</div>
+          </div>
+          <div class="calc-result" id="calc-power-result">電力と時間を入力してください</div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════
+           用語暗記セクション
+      ════════════════════════════════════════ -->
+      <section id="sec-vocab" class="section">
+        <div id="vocab-content"></div>
+      </section>
+
+      <!-- ════════════════════════════════════════
+           配線図セクション
+      ════════════════════════════════════════ -->
+      <section id="sec-wiring" class="section">
+        <div id="wiring-content"></div>
+      </section>
+
+      <!-- ════════════════════════════════════════
+           学習履歴セクション
+      ════════════════════════════════════════ -->
+      <section id="sec-stats" class="section">
+        <div id="stats-content"></div>
+      </section>
+    </div>
+
+    <!-- ─── データ ─── -->
+    <script src="src/data/questions.js"></script>
+    <script src="src/data/vocab.js"></script>
+    <!-- ─── ロジック ─── -->
+    <script src="src/js/storage.js"></script>
+    <script src="src/js/achievements.js"></script>
+    <script src="src/js/quiz.js"></script>
+    <script src="src/js/flashcard.js"></script>
+    <script src="src/js/stats.js"></script>
+    <script src="src/js/wiring.js"></script>
+    <script src="src/js/app.js"></script>
   </body>
 </html>

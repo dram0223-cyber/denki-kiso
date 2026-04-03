@@ -5,6 +5,7 @@
     score: 0,
     answered: false,
     category: null,
+    chapter: null,
     mode: 'random',
     timerSec: 30,
     timerInterval: null,
@@ -13,7 +14,14 @@
 
   function init(cat, mode) {
     clearInterval(state.timerInterval);
-    state.category = cat || null;
+    // mode === 'chapter' の場合は `cat` に { category, chapter } を渡す想定
+    if (mode === 'chapter' && cat && typeof cat === 'object') {
+      state.category = cat.category || null;
+      state.chapter = cat.chapter || null;
+    } else {
+      state.category = cat || null;
+      state.chapter = null;
+    }
     state.mode = mode || 'random';
 
     let pool;
@@ -22,6 +30,11 @@
     } else if (state.mode === 'weak') {
       pool = Storage.getWeakQuestions(20);
       if (!pool.length) pool = [...questions];
+    } else if (state.mode === 'chapter') {
+      pool = questions.filter(q =>
+        (!state.category || q.category === state.category) &&
+        (!state.chapter || q.chapter === state.chapter)
+      );
     } else if (state.category) {
       pool = questions.filter(q => q.category === state.category);
     } else {
@@ -322,7 +335,12 @@
     nextQuestion,
     toggleBookmark,
     reviewWrong,
-    getCategory: () => state.category,
+    getCategory: () => {
+      if (state.mode === 'chapter') {
+        return { category: state.category, chapter: state.chapter };
+      }
+      return state.category;
+    },
     getMode: () => state.mode,
   };
 })();

@@ -15,6 +15,11 @@ OUT_JS_FILE = ROOT / 'src' / 'data' / 'questions.js'
 OUT_JSON_FILE = ROOT / 'src' / 'data' / 'questions.json'
 ASSET_DIR = ROOT / 'src' / 'assets' / 'questions'
 
+# 出力先追加（D:\Project\denki）
+DENKI_ROOT = ROOT.parent / 'denki'
+DENKI_OUT_JS = DENKI_ROOT / 'src' / 'data' / 'questions.js'
+DENKI_ASSET_DIR = DENKI_ROOT / 'assets' / 'questions'
+
 QUESTION_LABEL_RE = re.compile(r'^\((\d+)\)$')
 NUMBER_RE = re.compile(r'[-+]?\d[\d,]*(?:\.\d+)?(?:[eE][-+]?\d+)?')
 SKIP_SHEETS = {'目次', '加工方法'}
@@ -273,12 +278,43 @@ def extract_images_from_xlsx(xlsx_path: Path, chapter_slug: str) -> Dict[str, Li
     return result
 
 
-def pick_image(question_row: int, images: List[dict]) -> Optional[str]:
-    if not images:
-        return None
+def assign_images_to_questions(q_map: Dict, sheet_images: List[dict]) -> Dict[int, str]:
+    """
+    画像を問題に1対1で割り当てる。
+    - 画像の行位置の「直上にある問題」に割り当てる
+    - 問題と画像の行距離が MAX_ROW_DISTANCE を超える場合は割り当てない
+    - 1つの画像は1問にしか割り当てない
+    """
+    if not sheet_images or not q_map:
+        return {}
 
-    nearest = min(images, key=lambda it: abs(question_row - it['row']))
-    return nearest['path']
+    MAX_ROW_DISTANCE = 20
+
+    # 問題を行番号順にソート
+    sorted_q = sorted((int(v['row']), k) for k, v in q_map.items())
+
+    assignments: Dict[int, str] = {}
+
+    for img in sheet_images:
+        img_row = img['row']
+
+        # 画像の行以下にある問題の中で最大行番号のもの（直上の問題）を探す
+        best_qno = None
+        best_q_row = -1
+        for q_row, qno in sorted_q:
+            if q_row <= img_row and q_row > best_q_row:
+                best_q_row = q_row
+                best_qno = qno
+
+        if best_qno is None:
+            continue
+        if img_row - best_q_row > MAX_ROW_DISTANCE:
+            continue
+        # 既に割り当て済みの問題には上書きしない（最初の画像を優先）
+        if best_qno not in assignments:
+            assignments[best_qno] = img['path']
+
+    return assignments
 
 
 def main():
@@ -301,6 +337,7 @@ def main():
                 continue
 
             sheet_images = images_by_sheet.get(ws.title, [])
+            image_assignments = assign_images_to_questions(q_map, sheet_images)
 
             for no in sorted(q_map.keys()):
                 meta = q_map[no]
@@ -335,6 +372,7 @@ def main():
                 item = {
                     'id': qid,
                     'category': category,
+                    'chapter': ws.title,
                     'difficulty': min(3, 1 + (no - 1) // 3),
                     'text': text,
                     'question_type': question_type,
@@ -350,7 +388,7 @@ def main():
                     item['numeric_tolerance_abs'] = numeric_abs_tol
                     item['numeric_tolerance_rel'] = numeric_rel_tol
 
-                image_path = pick_image(q_row, sheet_images)
+                image_path = image_assignments.get(no)
                 if image_path:
                     item['image'] = image_path
 
@@ -359,9 +397,28 @@ def main():
 
     js_output = 'const questions = ' + json.dumps(all_questions, ensure_ascii=False, indent=2) + ';\n'
     json_output = json.dumps(all_questions, ensure_ascii=False, indent=2)
+
+    # denki-keisan に出力
     OUT_JS_FILE.write_text(js_output, encoding='utf-8')
     OUT_JSON_FILE.write_text(json_output, encoding='utf-8')
     print(f'Generated {len(all_questions)} questions -> {OUT_JSON_FILE}')
+
+    # denki にも出力（画像パスを /assets/questions/ に変換）
+    if DENKI_ROOT.exists():
+        js_denki = js_output.replace(
+            '"/assets/questions/', '"/assets/questions/'
+        )
+        DENKI_OUT_JS.parent.mkdir(parents=True, exist_ok=True)
+        DENKI_OUT_JS.write_text(js_denki, encoding='utf-8')
+
+        # 画像ファイルも同期
+        if DENKI_ASSET_DIR.exists():
+            import shutil
+            for src_file in ASSET_DIR.glob('*.png'):
+                dst = DENKI_ASSET_DIR / src_file.name
+                if not dst.exists() or src_file.stat().st_mtime > dst.stat().st_mtime:
+                    shutil.copy2(src_file, dst)
+        print(f'Also written -> {DENKI_OUT_JS}')
 
 
 if __name__ == '__main__':

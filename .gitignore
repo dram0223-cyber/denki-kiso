@@ -2,3 +2,5 @@
 node_modules/
 dist/
 document/
+__pycache__/
+*.pyc

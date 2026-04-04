@@ -1,4 +1,4 @@
-﻿const Quiz = (() => {
+var Quiz = (() => {
   let state = {
     set: [],
     current: 0,

@@ -2,7 +2,7 @@
 //  flashcard.js — フラッシュカード（SRS + フリップアニメーション）
 // ============================================================
 
-const Flashcard = (() => {
+var Flashcard = (() => {
   let state = {
     queue: [],
     currentIdx: 0,

@@ -1,4 +1,4 @@
-﻿const App = (() => {
+var App = (() => {
   const TAB_IDS = ['home', 'quiz', 'formula', 'vocab', 'stats'];
   const CATEGORY_COLORS = ['theory', 'design', 'tools', 'law'];
 

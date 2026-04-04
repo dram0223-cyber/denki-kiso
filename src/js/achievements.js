@@ -2,7 +2,7 @@
 //  achievements.js — バッジ・実績システム
 // ============================================================
 
-const Achievements = (() => {
+var Achievements = (() => {
   const definitions = [
     {
       id: 'first_answer',

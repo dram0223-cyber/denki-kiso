@@ -33,7 +33,7 @@ const defaultState = () => ({
   earnedBadges: []
 });
 
-const Storage = (() => {
+var Storage = (() => {
   // ── 読み書き ──
   function load() {
     try {

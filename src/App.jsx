@@ -50,7 +50,7 @@ export default function App() {
     questions.forEach((q) => {
       map.set(q.category, (map.get(q.category) || 0) + 1);
     });
-    return [...map.entries()].sort((a, b) => b[1] - a[1]);
+    return [...map.entries()].sort((a, b) => a[0].localeCompare(b[0], 'ja'));
   }, []);
 
   const current = quizSet[index] || null;

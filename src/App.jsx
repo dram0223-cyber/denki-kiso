@@ -123,7 +123,7 @@ export default function App() {
     return (
       <main className="app">
         <header className="app-header">
-          <h1>電気計算 学習アプリ</h1>
+          <h1>電気基礎 学習アプリ</h1>
           <p>Excelから生成した問題で演習できます</p>
         </header>
 

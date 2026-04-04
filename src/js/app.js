@@ -1,12 +1,12 @@
 ﻿const App = (() => {
-  const TAB_IDS = ['home', 'quiz', 'formula', 'vocab', 'wiring', 'stats'];
+  const TAB_IDS = ['home', 'quiz', 'formula', 'vocab', 'stats'];
   const CATEGORY_COLORS = ['theory', 'design', 'tools', 'law'];
 
   function getTopCategories(limit = 4) {
     const counts = new Map();
     questions.forEach(q => counts.set(q.category, (counts.get(q.category) || 0) + 1));
     return [...counts.entries()]
-      .sort((a, b) => b[1] - a[1])
+      .sort((a, b) => a[0].localeCompare(b[0], 'ja'))
       .slice(0, limit)
       .map(([name, count], idx) => ({ name, count, color: CATEGORY_COLORS[idx % CATEGORY_COLORS.length] }));
   }
@@ -53,7 +53,6 @@
     document.querySelector(`[data-tab="${tab}"]`)?.classList.add('active');
 
     if (tab === 'vocab') Flashcard.init();
-    if (tab === 'wiring') initWiring();
     if (tab === 'stats') initStats();
     if (tab === 'formula') initFormula();
   }

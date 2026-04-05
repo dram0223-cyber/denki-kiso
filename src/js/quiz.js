@@ -30,6 +30,14 @@ var Quiz = (() => {
     } else if (state.mode === 'weak') {
       pool = Storage.getWeakQuestions(20);
       if (!pool.length) pool = [...questions];
+    } else if (state.mode === 'daily') {
+      // 今日の日付から決定論的に5問選出（1日中同じ問題）
+      const dayNum = Math.floor(Date.now() / 86400000);
+      pool = [...questions]
+        .map(q => ({ q, sort: (q.id * 1000 + dayNum * 7) % 997 }))
+        .sort((a, b) => a.sort - b.sort)
+        .slice(0, 5)
+        .map(x => x.q);
     } else if (state.mode === 'chapter') {
       pool = questions.filter(q =>
         (!state.category || q.category === state.category) &&
@@ -83,12 +91,35 @@ var Quiz = (() => {
       ? `<div class="quiz-image-wrap"><img class="quiz-image" src="${q.image}" alt="問題図" loading="lazy"></div>`
       : '';
 
+    // 数値問題は60秒、選択肢問題は30秒
+    state.timerSec = isNumeric ? 60 : 30;
+
+    const numericHint = (() => {
+      if (!isNumeric) return '';
+      const parts = [];
+      if (q.numeric_unit) parts.push(`単位: <strong>${q.numeric_unit}</strong>`);
+      if (q.numeric_tolerance_rel) parts.push(`±${Math.round(q.numeric_tolerance_rel * 100)}%の誤差まで正解`);
+      return parts.length ? `<div class="numeric-hint">${parts.join('　')}</div>` : '';
+    })();
+
     const answerArea = isNumeric
       ? `
         <div class="numeric-answer" id="numeric-area">
           <input id="numeric-input" class="numeric-input" type="text" inputmode="decimal" placeholder="数値を入力">
           <button class="btn btn-primary" onclick="Quiz.submitNumeric()">回答する</button>
-        </div>`
+        </div>
+        ${numericHint}
+        <details class="quiz-calc-details">
+          <summary>⚡ 電卓を使う</summary>
+          <div class="quiz-calc-inner">
+            <div class="quiz-calc-row">
+              <label>V</label><input type="number" id="qc-v" class="calc-input" oninput="Quiz.calcQuiz()">
+              <label>I</label><input type="number" id="qc-i" class="calc-input" oninput="Quiz.calcQuiz()">
+              <label>R</label><input type="number" id="qc-r" class="calc-input" oninput="Quiz.calcQuiz()">
+            </div>
+            <div id="qc-result" class="quiz-calc-result">2つ入力 → 計算</div>
+          </div>
+        </details>`
       : `
         <div class="choices" id="choices">
           ${q.choices.map((c, i) => `
@@ -103,6 +134,7 @@ var Quiz = (() => {
       <div class="quiz-header">
         <button class="back-btn" onclick="App.switchTab('home')">カテゴリ選択へ</button>
         <div class="quiz-meta">
+          ${state.mode === 'daily' ? '<span class="daily-badge">📅 今日の5問</span>' : ''}
           <span class="quiz-badge">${state.current + 1} / ${state.set.length}</span>
           <div class="timer-badge" id="timer-badge"><span id="timer-val">${state.timerSec}</span></div>
           <button class="btn-bookmark ${bookmarked ? 'bookmarked' : ''}" id="bookmark-btn" onclick="Quiz.toggleBookmark(${q.id})">${bookmarked ? '★' : '☆'}</button>
@@ -303,6 +335,22 @@ var Quiz = (() => {
     App.updateHomeStats();
   }
 
+  function calcQuiz() {
+    const getVal = id => {
+      const v = document.getElementById(id)?.value;
+      return v === '' || v === undefined ? null : parseFloat(v);
+    };
+    const V = getVal('qc-v'), I = getVal('qc-i'), R = getVal('qc-r');
+    const out = document.getElementById('qc-result');
+    if (!out) return;
+    const hasV = V !== null, hasI = I !== null, hasR = R !== null;
+    if (hasV && hasI && !hasR) { out.textContent = I === 0 ? 'I=0: 計算不可' : `R = ${(V/I).toFixed(3)} Ω`; return; }
+    if (hasV && hasR && !hasI) { out.textContent = R === 0 ? 'R=0: 計算不可' : `I = ${(V/R).toFixed(3)} A`; return; }
+    if (hasI && hasR && !hasV) { out.textContent = `V = ${(I*R).toFixed(3)} V`; return; }
+    if (hasV && hasI && hasR)  { out.textContent = `P = ${(V*I).toFixed(2)} W`; return; }
+    out.textContent = '2つの値を入力 → 計算';
+  }
+
   function reviewWrong() {
     const wrongSet = state.set.filter(q => state.wrongIds.includes(q.id));
     if (!wrongSet.length) return;
@@ -335,6 +383,7 @@ var Quiz = (() => {
     nextQuestion,
     toggleBookmark,
     reviewWrong,
+    calcQuiz,
     getCategory: () => {
       if (state.mode === 'chapter') {
         return { category: state.category, chapter: state.chapter };

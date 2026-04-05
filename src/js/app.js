@@ -77,6 +77,11 @@ var App = (() => {
     switchTab('quiz');
   }
 
+  function startDaily() {
+    Quiz.init(null, 'daily');
+    switchTab('quiz');
+  }
+
   function updateHomeStats() {
     const s = Storage.get();
     const acc = Storage.getAccuracy();
@@ -190,6 +195,15 @@ var App = (() => {
     out.textContent = '電力と時間を入力してください';
   }
 
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = isDark ? '🌙' : '☀️';
+  }
+
   function showToast(msg, type = '') {
     let container = document.getElementById('toast-container');
     if (!container) {
@@ -216,6 +230,8 @@ var App = (() => {
     startRandom,
     startBookmarks,
     startWeak,
+    startDaily,
+    toggleTheme,
     configureHomeCategoryCards,
     updateHomeStats,
     showToast,
@@ -223,8 +239,29 @@ var App = (() => {
   };
 })();
 
+// 問題データを fetch で非同期ロード
 document.addEventListener('DOMContentLoaded', () => {
-  App.configureHomeCategoryCards();
-  App.updateHomeStats();
-  Quiz.init(null, 'random');
+  // テーマ復元（データ読み込み前でも適用可能）
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    const btn = document.getElementById('theme-toggle');
+    if (btn) btn.textContent = '☀️';
+  }
+
+  fetch('src/data/questions.json')
+    .then(r => {
+      if (!r.ok) throw new Error('questions.json の読み込みに失敗しました');
+      return r.json();
+    })
+    .then(data => {
+      window.questions = data;
+      App.configureHomeCategoryCards();
+      App.updateHomeStats();
+      Quiz.init(null, 'random');
+    })
+    .catch(err => {
+      console.error(err);
+      const content = document.getElementById('quiz-content');
+      if (content) content.innerHTML = `<div class="text-center mt-2" style="color:var(--clr-error)">問題データの読み込みに失敗しました。<br>サーバーが起動しているか確認してください。</div>`;
+    });
 });

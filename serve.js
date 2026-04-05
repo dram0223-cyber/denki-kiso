@@ -18,19 +18,37 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
-  const extname = path.extname(filePath).toLowerCase();
-  const contentType = MIME_TYPES[extname] || 'application/octet-stream';
+  const url = req.url === '/' ? '/index.html' : req.url;
 
-  fs.readFile(filePath, (error, content) => {
-    if (error) {
-      res.writeHead(error.code === 'ENOENT' ? 404 : 500);
-      res.end(error.code === 'ENOENT' ? 'File Not Found' : 'Server Error');
-    } else {
-      res.writeHead(200, { 'Content-Type': contentType });
-      res.end(content, 'utf-8');
+  // public/ を優先（Vite の挙動に合わせる）、次にルート
+  const candidates = [
+    path.join(__dirname, 'public', url),
+    path.join(__dirname, url),
+  ];
+
+  const tryNext = (paths) => {
+    if (!paths.length) {
+      res.writeHead(404);
+      res.end('File Not Found');
+      return;
     }
-  });
+    const filePath = paths[0];
+    const extname = path.extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[extname] || 'application/octet-stream';
+    fs.readFile(filePath, (error, content) => {
+      if (error?.code === 'ENOENT') {
+        tryNext(paths.slice(1));
+      } else if (error) {
+        res.writeHead(500);
+        res.end('Server Error');
+      } else {
+        res.writeHead(200, { 'Content-Type': contentType });
+        res.end(content, 'utf-8');
+      }
+    });
+  };
+
+  tryNext(candidates);
 });
 
 server.listen(PORT, '127.0.0.1', () => {

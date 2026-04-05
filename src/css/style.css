@@ -113,7 +113,7 @@ input, select { font-family: inherit; }
 .header-streak {
   display: flex; align-items: center; gap: 5px;
   background: var(--clr-warn-l);
-  border: 1px solid #FFD43B;
+  border: 1px solid var(--clr-border);
   border-radius: var(--radius-full);
   padding: 4px 12px;
   font-size: 13px; font-weight: 600; color: var(--clr-warn);
@@ -408,8 +408,8 @@ input, select { font-family: inherit; }
 
 /* 解説 */
 .explanation {
-  background: linear-gradient(135deg, var(--clr-primary-l), #F3F0FF);
-  border: 1px solid #C5CFE8;
+  background: var(--clr-primary-l);
+  border: 1px solid var(--clr-border);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   margin-bottom: 1.25rem;
@@ -531,8 +531,8 @@ input, select { font-family: inherit; }
 
 /* 電卓 */
 .calc-card {
-  background: linear-gradient(135deg, var(--clr-primary-l), #F3F0FF);
-  border: 1px solid #C5CFE8;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
   padding: 16px;
   margin-bottom: 1.5rem;
@@ -546,7 +546,7 @@ input, select { font-family: inherit; }
   border: 1.5px solid var(--clr-border2);
   border-radius: var(--radius-sm);
   font-size: 14px; font-family: var(--font-mono);
-  background: white; color: var(--clr-text);
+  background: var(--clr-surface2); color: var(--clr-text);
   outline: none; transition: border-color .15s;
 }
 .calc-input:focus { border-color: var(--clr-primary); }
@@ -915,3 +915,129 @@ input, select { font-family: inherit; }
   padding: 10px 12px;
   font-size: 16px;
 }
+
+/* 数値入力ヒント */
+.numeric-hint {
+  font-size: 12px;
+  color: var(--clr-muted);
+  margin: -4px 0 10px;
+  padding: 4px 8px;
+  background: var(--clr-surface2);
+  border-radius: var(--radius-sm);
+}
+.numeric-hint strong { color: var(--clr-text); }
+
+/* クイズ内電卓（details/summaryスタイル） */
+.quiz-calc-details {
+  margin: 8px 0 16px;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.quiz-calc-details summary {
+  padding: 9px 14px;
+  font-size: 13px; font-weight: 600;
+  color: var(--clr-primary);
+  background: var(--clr-primary-l);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.quiz-calc-details summary::-webkit-details-marker { display: none; }
+.quiz-calc-details[open] summary { border-bottom: 1px solid var(--clr-border); }
+.quiz-calc-inner {
+  padding: 12px 14px;
+  background: var(--clr-surface);
+}
+.quiz-calc-row {
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.quiz-calc-row label {
+  font-size: 13px; font-weight: 700; color: var(--clr-text);
+  min-width: 14px;
+}
+.quiz-calc-row .calc-input { flex: 1; min-width: 60px; max-width: 100px; }
+.quiz-calc-result {
+  font-size: 15px; font-weight: 700;
+  color: var(--clr-primary);
+  background: var(--clr-primary-l);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+}
+
+/* デイリーチャレンジボタン */
+.daily-start-btn {
+  background: linear-gradient(135deg, #2F9E44, #40C057) !important;
+  box-shadow: 0 4px 16px rgba(47,158,68,.35) !important;
+}
+.daily-start-btn:hover { box-shadow: 0 6px 20px rgba(47,158,68,.45) !important; }
+
+/* デイリーバッジ（クイズヘッダー内） */
+.daily-badge {
+  font-size: 12px; font-weight: 700;
+  background: #EBFBEE; border: 1px solid #69DB7C;
+  color: #2F9E44;
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+}
+
+/* カテゴリ別バーの名前幅を拡張 */
+.cat-acc-name { min-width: 130px !important; font-size: 12px !important; }
+
+/* ダークモード（data-theme="dark" または OS設定） */
+[data-theme="dark"],
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --clr-bg:       #0F1117;
+  --clr-surface:  #1A1D2E;
+  --clr-surface2: #242736;
+  --clr-border:   #2E3247;
+  --clr-border2:  #3D4263;
+  --clr-text:     #E8EAF6;
+  --clr-muted:    #8B93B8;
+  --clr-subtle:   #5C6490;
+  --clr-primary-l: #1E2340;
+  --clr-theory-l: #1E1A3A;
+  --clr-design-l: #141E35;
+  --clr-tools-l:  #2B1E0A;
+  --clr-law-l:    #0E2218;
+  --clr-success-l:#0E2218;
+  --clr-error-l:  #2B1010;
+  --clr-warn-l:   #2B1E0A;
+}}
+[data-theme="dark"] {
+  --clr-bg:        #0F1117;
+  --clr-surface:   #1C1F2E;
+  --clr-surface2:  #272B3E;
+  --clr-border:    #363B55;
+  --clr-border2:   #464D6E;
+  --clr-text:      #EDF0FF;
+  --clr-muted:     #A0A8CC;
+  --clr-subtle:    #6B7299;
+  --clr-primary-l: #1E2A4A;
+  --clr-theory-l:  #231D40;
+  --clr-design-l:  #17213A;
+  --clr-tools-l:   #2E1F08;
+  --clr-law-l:     #0F2419;
+  --clr-success-l: #0F2419;
+  --clr-error-l:   #2E1010;
+  --clr-warn-l:    #2E2008;
+}
+[data-theme="dark"] .flashcard-back,
+[data-theme="dark"] .calc-input,
+[data-theme="dark"] .numeric-input,
+[data-theme="dark"] .quiz-calc-inner { background: var(--clr-surface2); color: var(--clr-text); }
+
+/* ダークモード切替ボタン */
+.theme-toggle-btn {
+  background: none;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+  transition: border-color .15s;
+}
+.theme-toggle-btn:hover { border-color: var(--clr-border2); }

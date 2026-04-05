@@ -25,7 +25,10 @@
             <div class="header-sub">学習アプリ</div>
           </div>
         </div>
-        <div class="header-streak" id="header-streak">1日連続</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button id="theme-toggle" class="theme-toggle-btn" onclick="App.toggleTheme()" title="ダークモード切替">🌙</button>
+          <div class="header-streak" id="header-streak">1日連続</div>
+        </div>
       </header>
 
       <!-- ─── ナビゲーションタブ ─── -->
@@ -119,7 +122,10 @@
         </div>
 
         <!-- スタートボタン群 -->
-        <button class="start-btn" onclick="App.startRandom()">
+        <button class="start-btn daily-start-btn" onclick="App.startDaily()">
+          📅 今日の5問チャレンジ
+        </button>
+        <button class="start-btn" onclick="App.startRandom()" style="background:linear-gradient(135deg,#495057,#343A40);box-shadow:0 4px 16px rgba(0,0,0,.2)">
           ⚡ ランダム出題で学習開始
         </button>
         <div style="display:flex;gap:8px;margin-bottom:1.5rem">
@@ -198,8 +204,7 @@
       </section>
     </div>
 
-    <!-- ─── データ ─── -->
-    <script src="src/data/questions.js"></script>
+    <!-- ─── 静的データ（小さいものはそのまま） ─── -->
     <script src="src/data/vocab.js"></script>
     <!-- ─── ロジック ─── -->
     <script src="src/js/storage.js"></script>

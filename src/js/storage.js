@@ -12,13 +12,8 @@ const defaultState = () => ({
   lastStudyDate: null,
   sessionHistory: [],      // [{date, answered, correct, category}]
 
-  // カテゴリ別
-  categoryStats: {
-    '電気理論': { answered: 0, correct: 0 },
-    '配線設計': { answered: 0, correct: 0 },
-    '材料・工具': { answered: 0, correct: 0 },
-    '法令':     { answered: 0, correct: 0 }
-  },
+  // カテゴリ別（動的に追加される）
+  categoryStats: {},
 
   // 問題ごとの履歴 { id: { correct, wrong, lastSeen } }
   questionHistory: {},
@@ -62,11 +57,12 @@ var Storage = (() => {
     _state.totalAnswered++;
     if (isCorrect) _state.totalCorrect++;
 
-    // カテゴリ別
-    if (_state.categoryStats[category]) {
-      _state.categoryStats[category].answered++;
-      if (isCorrect) _state.categoryStats[category].correct++;
+    // カテゴリ別（存在しないカテゴリは自動作成）
+    if (!_state.categoryStats[category]) {
+      _state.categoryStats[category] = { answered: 0, correct: 0 };
     }
+    _state.categoryStats[category].answered++;
+    if (isCorrect) _state.categoryStats[category].correct++;
 
     // 問題別
     if (!_state.questionHistory[questionId]) {

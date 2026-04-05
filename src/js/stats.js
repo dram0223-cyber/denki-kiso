@@ -116,28 +116,30 @@ function renderWeeklyChart(days) {
   </svg>`;
 }
 
-// ── カテゴリ別バー ───────────────────────────────
+// ── カテゴリ別バー（動的） ────────────────────────
 function renderCategoryBars(s) {
-  const cats = [
-    { key: '電気理論', cls: 'theory', color: 'linear-gradient(90deg,#7048E8,#9775FA)' },
-    { key: '配線設計', cls: 'design', color: 'linear-gradient(90deg,#1C7ED6,#4DABF7)' },
-    { key: '材料・工具', cls: 'tools', color: 'linear-gradient(90deg,#E67700,#FFA94D)' },
-    { key: '法令',     cls: 'law',    color: 'linear-gradient(90deg,#2F9E44,#69DB7C)' },
+  const palette = [
+    { cls: 'theory', color: 'linear-gradient(90deg,#7048E8,#9775FA)' },
+    { cls: 'design', color: 'linear-gradient(90deg,#1C7ED6,#4DABF7)' },
+    { cls: 'tools',  color: 'linear-gradient(90deg,#E67700,#FFA94D)' },
+    { cls: 'law',    color: 'linear-gradient(90deg,#2F9E44,#69DB7C)' },
   ];
-  return cats.map(cat => {
-    const acc = Storage.getCategoryAccuracy(cat.key);
-    const stat = s.categoryStats[cat.key] || { answered: 0, correct: 0 };
+  const catKeys = [...new Set(questions.map(q => q.category))].sort();
+  return catKeys.map((key, idx) => {
+    const p = palette[idx % palette.length];
+    const acc = Storage.getCategoryAccuracy(key);
+    const stat = s.categoryStats[key] || { answered: 0, correct: 0 };
     return `
       <div class="cat-acc-row">
-        <div class="cat-acc-name">${cat.key}</div>
+        <div class="cat-acc-name">${key}</div>
         <div class="cat-acc-bar">
-          <div class="cat-acc-fill" style="width:${acc ?? 0}%;background:${cat.color}"></div>
+          <div class="cat-acc-fill" style="width:${acc ?? 0}%;background:${p.color}"></div>
         </div>
-        <div class="cat-acc-pct" style="color:var(--clr-${cat.cls})">
+        <div class="cat-acc-pct" style="color:var(--clr-${p.cls})">
           ${acc !== null ? acc + '%' : '—'}
         </div>
       </div>
-      <div style="font-size:11px;color:var(--clr-muted);margin-top:-4px;margin-left:100px;margin-bottom:8px">
+      <div style="font-size:11px;color:var(--clr-muted);margin-top:-4px;margin-left:140px;margin-bottom:8px">
         ${stat.answered}問解答 / ${stat.correct}問正解
       </div>
     `;

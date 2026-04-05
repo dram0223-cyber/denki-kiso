@@ -211,14 +211,16 @@ var Flashcard = (() => {
         ${filters.map(f => `<button class="filter-chip ${state.filter === f.key ? 'active' : ''}"
           onclick="Flashcard.init('${f.key}')">${f.label}</button>`).join('')}
       </div>
-      <div style="display:flex;gap:8px;margin-bottom:10px">
-        <input class="vocab-search" type="search" placeholder="用語を検索..." id="vocab-search-input" value="${_searchTerm}" />
+      <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center">
+        <input class="vocab-search" type="search" placeholder="用語を検索..." id="vocab-search-input" value="${_searchTerm}" style="flex:1;margin-bottom:0" />
         <button class="btn" onclick="Flashcard.toggleMode()">カード表示</button>
+        <button class="btn btn-primary" onclick="VocabAdmin.openModal()" style="white-space:nowrap">＋ 追加</button>
       </div>
       <div class="vocab-list" id="vocab-list">
         ${pool.map((v, i) => {
           const srs = Storage.getSRS(v.term);
           const due = srs.due <= Date.now();
+          const id = v._id ?? i;
           return `
           <div class="vocab-card" id="vocab-${i}">
             <div class="vocab-front" onclick="Flashcard.toggleCard(${i})">
@@ -226,7 +228,13 @@ var Flashcard = (() => {
                 <div class="vocab-term">${v.term} ${due ? '<span style="color:var(--clr-warn);font-size:11px">復習</span>' : ''}</div>
                 ${v.reading ? `<div class="vocab-reading">${v.reading}</div>` : ''}
               </div>
-              <div class="vocab-expand">⌄</div>
+              <div style="display:flex;align-items:center;gap:4px">
+                <button class="vocab-edit-btn" title="編集"
+                  onclick="event.stopPropagation();VocabAdmin.openModal(${JSON.stringify(v).replace(/"/g,'&quot;')})">✏️</button>
+                <button class="vocab-edit-btn vocab-del-btn" title="削除"
+                  onclick="event.stopPropagation();VocabAdmin.deleteItem(${id},'${v.term.replace(/'/g,"\\'")}')">🗑</button>
+                <div class="vocab-expand">⌄</div>
+              </div>
             </div>
             <div class="vocab-body">
               <div class="vocab-def-text">${v.def}</div>
@@ -269,4 +277,132 @@ var Flashcard = (() => {
     toggleCard,
     setFilter: (f) => { state.filter = f; }
   };
+})();
+
+// ============================================================
+//  VocabAdmin — 用語のアプリ内管理（追加・編集・削除）
+// ============================================================
+var VocabAdmin = (() => {
+
+  function openModal(item = null) {
+    _removeModal();
+    const isEdit = !!item;
+    const cats = [...new Set(vocabData.map(v => v.category).filter(Boolean))];
+    const catOptions = cats.map(c =>
+      `<option value="${c}" ${item?.category === c ? 'selected' : ''}>${c}</option>`
+    ).join('');
+
+    const overlay = document.createElement('div');
+    overlay.id = 'vocab-admin-modal';
+    overlay.className = 'vocab-modal-overlay';
+    overlay.innerHTML = `
+      <div class="vocab-modal" role="dialog">
+        <div class="vocab-modal-header">
+          <div class="vocab-modal-title">${isEdit ? '✏️ 用語を編集' : '➕ 用語を追加'}</div>
+          <button class="vocab-modal-close" onclick="VocabAdmin.closeModal()">×</button>
+        </div>
+        <form class="vocab-modal-form" id="vocab-admin-form">
+          <label>用語 <span class="required">*</span></label>
+          <input name="term" required placeholder="例: オームの法則" value="${_esc(item?.term)}">
+
+          <label>読み方</label>
+          <input name="reading" placeholder="例: おーむのほうそく" value="${_esc(item?.reading)}">
+
+          <label>定義・説明 <span class="required">*</span></label>
+          <textarea name="def" required placeholder="例: V = I × R。電圧・電流・抵抗の関係を示す基本法則。">${_esc(item?.def)}</textarea>
+
+          <label>例文・補足</label>
+          <textarea name="example" placeholder="例: 100V ÷ 10Ω = 10A">${_esc(item?.example)}</textarea>
+
+          <label>カテゴリ</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <select name="category" id="vocab-cat-select" onchange="VocabAdmin.onCatChange(this)">
+              <option value="">── 選択 ──</option>
+              ${catOptions}
+              <option value="__new__">＋ 新しいカテゴリ</option>
+            </select>
+            <input name="category_new" id="vocab-cat-new" placeholder="カテゴリ名を入力"
+              style="display:none;flex:1" value="">
+          </div>
+
+          <div class="vocab-modal-actions">
+            <button type="button" class="btn" onclick="VocabAdmin.closeModal()">キャンセル</button>
+            <button type="submit" class="btn btn-primary">${isEdit ? '保存する' : '追加する'}</button>
+          </div>
+        </form>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    // ── 既存カテゴリがリストにない場合は新規入力欄を表示
+    if (item?.category && !cats.includes(item.category)) {
+      const sel = document.getElementById('vocab-cat-select');
+      sel.value = '__new__';
+      document.getElementById('vocab-cat-new').style.display = '';
+      document.getElementById('vocab-cat-new').value = item.category;
+    }
+
+    // ── フォーム送信
+    document.getElementById('vocab-admin-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      _save(e.target, isEdit ? item._id : null);
+    });
+
+    // ── 背景クリックで閉じる
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) _removeModal();
+    });
+
+    overlay.querySelector('[name="term"]').focus();
+  }
+
+  function onCatChange(sel) {
+    const newInput = document.getElementById('vocab-cat-new');
+    newInput.style.display = sel.value === '__new__' ? '' : 'none';
+    if (sel.value !== '__new__') newInput.value = '';
+  }
+
+  function closeModal() { _removeModal(); }
+
+  function deleteItem(id, termName) {
+    if (!confirm(`「${termName}」を削除しますか？`)) return;
+    window.vocabData = Storage.deleteVocabItem(id);
+    App.showToast('用語を削除しました');
+    Flashcard.init();
+  }
+
+  function _save(form, id) {
+    const catSel = form.category.value;
+    const catNew = form.category_new?.value.trim();
+    const category = catSel === '__new__' ? (catNew || '未分類') : (catSel || '未分類');
+
+    const item = {
+      term:     form.term.value.trim(),
+      reading:  form.reading.value.trim() || undefined,
+      def:      form.def.value.trim(),
+      example:  form.example.value.trim() || undefined,
+      category,
+    };
+
+    if (id) {
+      window.vocabData = Storage.updateVocabItem(id, item);
+      App.showToast('用語を更新しました');
+    } else {
+      window.vocabData = Storage.addVocabItem(item);
+      App.showToast('用語を追加しました');
+    }
+
+    _removeModal();
+    Flashcard.init();
+  }
+
+  function _removeModal() {
+    document.getElementById('vocab-admin-modal')?.remove();
+  }
+
+  function _esc(str) {
+    return (str || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+  }
+
+  return { openModal, onCatChange, closeModal, deleteItem };
 })();

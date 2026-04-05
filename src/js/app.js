@@ -255,6 +255,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(data => {
       window.questions = data;
+      // vocab.js の静的データを初期値として localStorage に取り込む
+      window.vocabData = Storage.initVocab();
       App.configureHomeCategoryCards();
       App.updateHomeStats();
       Quiz.init(null, 'random');

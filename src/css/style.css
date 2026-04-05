@@ -1029,6 +1029,79 @@ input, select { font-family: inherit; }
 [data-theme="dark"] .numeric-input,
 [data-theme="dark"] .quiz-calc-inner { background: var(--clr-surface2); color: var(--clr-text); }
 
+/* ─────────────────────────────────────────
+   用語管理モーダル
+───────────────────────────────────────── */
+.vocab-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  animation: fadeIn .15s var(--ease-out);
+}
+.vocab-modal {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-xl);
+  width: 100%; max-width: 480px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: slideDown .2s var(--ease-out);
+}
+.vocab-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--clr-border);
+}
+.vocab-modal-title { font-size: 16px; font-weight: 700; color: var(--clr-text); }
+.vocab-modal-close {
+  background: none; border: none; font-size: 20px;
+  color: var(--clr-muted); cursor: pointer; padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+}
+.vocab-modal-close:hover { background: var(--clr-surface2); }
+
+.vocab-modal-form {
+  padding: 16px 20px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.vocab-modal-form label {
+  font-size: 12px; font-weight: 700; color: var(--clr-muted);
+  margin-bottom: -6px;
+}
+.vocab-modal-form .required { color: var(--clr-error); }
+.vocab-modal-form input,
+.vocab-modal-form select,
+.vocab-modal-form textarea {
+  width: 100%; padding: 9px 12px;
+  border: 1.5px solid var(--clr-border2);
+  border-radius: var(--radius-md);
+  font-size: 14px; font-family: var(--font-sans);
+  background: var(--clr-surface2); color: var(--clr-text);
+  outline: none; transition: border-color .15s;
+}
+.vocab-modal-form input:focus,
+.vocab-modal-form select:focus,
+.vocab-modal-form textarea:focus { border-color: var(--clr-primary); }
+.vocab-modal-form textarea { min-height: 80px; resize: vertical; }
+.vocab-modal-actions {
+  display: flex; gap: 8px; justify-content: flex-end; margin-top: 6px;
+}
+
+/* 編集・削除ボタン（カード内） */
+.vocab-edit-btn {
+  background: none; border: none;
+  font-size: 14px; padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--clr-muted); cursor: pointer;
+  transition: background .15s;
+  line-height: 1;
+}
+.vocab-edit-btn:hover { background: var(--clr-surface2); }
+.vocab-del-btn:hover { background: var(--clr-error-l); color: var(--clr-error); }
+
 /* ダークモード切替ボタン */
 .theme-toggle-btn {
   background: none;

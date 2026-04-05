@@ -25,7 +25,10 @@ const defaultState = () => ({
   srsData: {},
 
   // バッジ取得済み
-  earnedBadges: []
+  earnedBadges: [],
+
+  // 用語データ（アプリ内管理）null = 未初期化（vocab.jsからシード）
+  customVocab: null
 });
 
 var Storage = (() => {
@@ -212,6 +215,44 @@ var Storage = (() => {
     return newBadges;
   }
 
+  // ── 用語管理（アプリ内 CRUD） ──
+  function initVocab() {
+    if (!_state.customVocab) {
+      // vocab.js の静的データを ID 付きで取り込む
+      _state.customVocab = vocabData.map((v, i) => ({ ...v, _id: i + 1 }));
+      save(_state);
+    }
+    return _state.customVocab;
+  }
+
+  function getVocabList() {
+    return _state.customVocab || initVocab();
+  }
+
+  function addVocabItem(item) {
+    const list = getVocabList();
+    const maxId = list.reduce((m, v) => Math.max(m, v._id || 0), 0);
+    list.push({ ...item, _id: maxId + 1 });
+    _state.customVocab = list;
+    save(_state);
+    return list;
+  }
+
+  function updateVocabItem(id, item) {
+    const list = getVocabList();
+    const idx = list.findIndex(v => v._id === id);
+    if (idx >= 0) list[idx] = { ...item, _id: id };
+    _state.customVocab = list;
+    save(_state);
+    return list;
+  }
+
+  function deleteVocabItem(id) {
+    _state.customVocab = getVocabList().filter(v => v._id !== id);
+    save(_state);
+    return _state.customVocab;
+  }
+
   // ── リセット ──
   function reset() {
     _state = defaultState();
@@ -226,6 +267,7 @@ var Storage = (() => {
     getLast7Days,
     getSRS, updateSRS, getDueSRSTerms, getNextSRSLabel,
     checkAndAwardBadges,
+    initVocab, getVocabList, addVocabItem, updateVocabItem, deleteVocabItem,
     reset
   };
 })();

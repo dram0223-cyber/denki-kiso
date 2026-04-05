@@ -986,43 +986,55 @@ input, select { font-family: inherit; }
 /* カテゴリ別バーの名前幅を拡張 */
 .cat-acc-name { min-width: 130px !important; font-size: 12px !important; }
 
-/* ダークモード（data-theme="dark" または OS設定） */
+/* ─────────────────────────────────────────
+   ダークモード — Supabase DESIGN.md 準拠
+   設計哲学: ボーダーで深度を出す / シャドウ最小化
+   参考: VoltAgent/awesome-design-md (CC検査済・クリーン)
+───────────────────────────────────────── */
 [data-theme="dark"],
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --clr-bg:       #0F1117;
-  --clr-surface:  #1A1D2E;
-  --clr-surface2: #242736;
-  --clr-border:   #2E3247;
-  --clr-border2:  #3D4263;
+  --clr-bg:       #111318;
+  --clr-surface:  #1A1D26;
+  --clr-surface2: #22263A;
+  --clr-border:   #2C3050;
+  --clr-border2:  #3A3F62;
   --clr-text:     #E8EAF6;
   --clr-muted:    #8B93B8;
   --clr-subtle:   #5C6490;
-  --clr-primary-l: #1E2340;
-  --clr-theory-l: #1E1A3A;
-  --clr-design-l: #141E35;
-  --clr-tools-l:  #2B1E0A;
-  --clr-law-l:    #0E2218;
-  --clr-success-l:#0E2218;
-  --clr-error-l:  #2B1010;
-  --clr-warn-l:   #2B1E0A;
+  --clr-primary-l: #1A2240;
+  --clr-theory-l: #1D1A38;
+  --clr-design-l: #131D33;
+  --clr-tools-l:  #281C08;
+  --clr-law-l:    #0D2016;
+  --clr-success-l:#0D2016;
+  --clr-error-l:  #280E0E;
+  --clr-warn-l:   #281C08;
+  /* ダーク時: シャドウをボーダーベースに切替 (Supabase方式) */
+  --shadow-sm: 0 0 0 1px rgba(255,255,255,.04);
+  --shadow-md: 0 0 0 1px rgba(255,255,255,.06), 0 2px 8px rgba(0,0,0,.3);
+  --shadow-lg: 0 0 0 1px rgba(255,255,255,.06), 0 4px 16px rgba(0,0,0,.4);
 }}
 [data-theme="dark"] {
-  --clr-bg:        #0F1117;
-  --clr-surface:   #1C1F2E;
-  --clr-surface2:  #272B3E;
-  --clr-border:    #363B55;
-  --clr-border2:   #464D6E;
+  --clr-bg:        #111318;
+  --clr-surface:   #1C2030;
+  --clr-surface2:  #252940;
+  --clr-border:    #2E3354;
+  --clr-border2:   #3D4470;
   --clr-text:      #EDF0FF;
   --clr-muted:     #A0A8CC;
   --clr-subtle:    #6B7299;
-  --clr-primary-l: #1E2A4A;
-  --clr-theory-l:  #231D40;
-  --clr-design-l:  #17213A;
-  --clr-tools-l:   #2E1F08;
-  --clr-law-l:     #0F2419;
-  --clr-success-l: #0F2419;
-  --clr-error-l:   #2E1010;
-  --clr-warn-l:    #2E2008;
+  --clr-primary-l: #1C2848;
+  --clr-theory-l:  #201C3E;
+  --clr-design-l:  #151F38;
+  --clr-tools-l:   #2C1D07;
+  --clr-law-l:     #0E2218;
+  --clr-success-l: #0E2218;
+  --clr-error-l:   #2C0F0F;
+  --clr-warn-l:    #2C1E07;
+  /* ダーク時: シャドウをボーダーベースに切替 (Supabase方式) */
+  --shadow-sm: 0 0 0 1px rgba(255,255,255,.05);
+  --shadow-md: 0 0 0 1px rgba(255,255,255,.07), 0 2px 8px rgba(0,0,0,.35);
+  --shadow-lg: 0 0 0 1px rgba(255,255,255,.07), 0 4px 20px rgba(0,0,0,.45);
 }
 [data-theme="dark"] .flashcard-back,
 [data-theme="dark"] .calc-input,

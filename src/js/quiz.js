@@ -113,9 +113,9 @@ var Quiz = (() => {
           <summary>⚡ 電卓を使う</summary>
           <div class="quiz-calc-inner">
             <div class="quiz-calc-row">
-              <label>V</label><input type="number" id="qc-v" class="calc-input" oninput="Quiz.calcQuiz()">
-              <label>I</label><input type="number" id="qc-i" class="calc-input" oninput="Quiz.calcQuiz()">
-              <label>R</label><input type="number" id="qc-r" class="calc-input" oninput="Quiz.calcQuiz()">
+              <label>V</label><input type="number" id="qc-v" class="calc-input" step="0.1" oninput="Quiz.calcQuiz()">
+              <label>I</label><input type="number" id="qc-i" class="calc-input" step="0.1" oninput="Quiz.calcQuiz()">
+              <label>R</label><input type="number" id="qc-r" class="calc-input" step="0.1" oninput="Quiz.calcQuiz()">
             </div>
             <div id="qc-result" class="quiz-calc-result">2つ入力 → 計算</div>
           </div>

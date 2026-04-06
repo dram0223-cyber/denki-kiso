@@ -2821,5 +2821,1012 @@
     "numeric_unit": "kV･A",
     "numeric_tolerance_abs": 0.1534,
     "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 148,
+    "category": "第1章 直流回路",
+    "chapter": "1-1電気回路",
+    "difficulty": 1,
+    "text": "2.5Aの電流が4秒間流れたとき、移動した電気量Q[C]はいくらか。\n\n【ヒント】 Q = I × t",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Q = I × t\n【代入】 Q = 2.5 × 4\n【計算】 Q = 10\n【答え】 10 C",
+    "tags": [
+      "第1章直流回路",
+      "1-1電気回路"
+    ],
+    "numeric_answer": 10,
+    "numeric_unit": "C",
+    "numeric_tolerance_abs": 0.2,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 149,
+    "category": "第1章 直流回路",
+    "chapter": "1-1電気回路",
+    "difficulty": 1,
+    "text": "36μCの電気量を6μAの電流で移動させるのに要する時間t[s]を求めよ。\n\n【ヒント】 t = Q / I",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 t = Q / I\n【代入】 t = 36×10⁻⁶ ÷ 6×10⁻⁶\n【計算】 t = 36 ÷ 6 = 6\n【答え】 6 秒",
+    "tags": [
+      "第1章直流回路",
+      "1-1電気回路"
+    ],
+    "numeric_answer": 6,
+    "numeric_unit": "秒",
+    "numeric_tolerance_abs": 0.12,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 150,
+    "category": "第1章 直流回路",
+    "chapter": "1-2オームの法則",
+    "difficulty": 1,
+    "text": "抵抗15Ωに4Aの電流を流したとき、両端に生じる電圧V[V]を求めよ。\n\n【ヒント】 V = I × R",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 V = I × R\n【代入】 V = 4 × 15\n【計算】 V = 60\n【答え】 60 V",
+    "tags": [
+      "第1章直流回路",
+      "1-2オームの法則"
+    ],
+    "numeric_answer": 60,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 1.2,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 151,
+    "category": "第1章 直流回路",
+    "chapter": "1-2オームの法則",
+    "difficulty": 1,
+    "text": "120Vの電圧を加えたとき8Aの電流が流れた。この抵抗R[Ω]を求めよ。\n\n【ヒント】 R = V / I",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 R = V / I\n【代入】 R = 120 ÷ 8\n【計算】 R = 15\n【答え】 15 Ω",
+    "tags": [
+      "第1章直流回路",
+      "1-2オームの法則"
+    ],
+    "numeric_answer": 15,
+    "numeric_unit": "Ω",
+    "numeric_tolerance_abs": 0.3,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 152,
+    "category": "第1章 直流回路",
+    "chapter": "1-4並列接続",
+    "difficulty": 1,
+    "text": "20Ωと30Ωの抵抗を並列接続したときの合成抵抗R[Ω]を求めよ。\n\n【ヒント】 R = R1R2/(R1+R2)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 R = R1R2/(R1+R2)\n【代入】 R = (20×30)/(20+30) = 600/50\n【計算】 R = 12\n【答え】 12 Ω",
+    "tags": [
+      "第1章直流回路",
+      "1-4並列接続"
+    ],
+    "numeric_answer": 12,
+    "numeric_unit": "Ω",
+    "numeric_tolerance_abs": 0.24,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 153,
+    "category": "第1章 直流回路",
+    "chapter": "1-4並列接続",
+    "difficulty": 1,
+    "text": "10Ω、20Ω、60Ωの3つの抵抗を並列接続したときの合成抵抗R[Ω]を求めよ。\n\n【ヒント】 1/R = 1/R1 + 1/R2 + 1/R3",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 1/R = 1/R1 + 1/R2 + 1/R3\n【代入】 1/R = 1/10 + 1/20 + 1/60 = 6/60 + 3/60 + 1/60 = 10/60\n【計算】 R = 6\n【答え】 6 Ω",
+    "tags": [
+      "第1章直流回路",
+      "1-4並列接続"
+    ],
+    "numeric_answer": 6,
+    "numeric_unit": "Ω",
+    "numeric_tolerance_abs": 0.12,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 154,
+    "category": "第1章 直流回路",
+    "chapter": "1-5応用1",
+    "difficulty": 1,
+    "text": "R1=5Ωと、R2=20Ω、R3=20Ωが並列接続された回路に電源E=60Vを接続した。回路全体に流れる電流I[A]を求めよ。\n\n【ヒント】 並列部分の合成抵抗を求め、直列の全抵抗を求める",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 並列: R23 = R2R3/(R2+R3)，全体: R = R1 + R23，I = E/R\n【代入】 R23 = (20×20)/(20+20) = 400/40 = 10Ω\n【計算】 R = 5 + 10 = 15Ω，I = 60/15 = 4\n【答え】 4 A",
+    "tags": [
+      "第1章直流回路",
+      "1-5応用1"
+    ],
+    "numeric_answer": 4,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 0.08,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 155,
+    "category": "第1章 直流回路",
+    "chapter": "1-5応用2",
+    "difficulty": 1,
+    "text": "R1=12Ω、R2=8Ωを直列接続した回路にE=100Vを加えた。R2の両端電圧V2[V]を求めよ。\n\n【ヒント】 分圧の公式: V2 = E × R2/(R1+R2)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 V2 = E × R2/(R1+R2)\n【代入】 V2 = 100 × 8/(12+8) = 100 × 8/20\n【計算】 V2 = 100 × 0.4 = 40\n【答え】 40 V",
+    "tags": [
+      "第1章直流回路",
+      "1-5応用2"
+    ],
+    "numeric_answer": 40,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 0.8,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 156,
+    "category": "第1章 直流回路",
+    "chapter": "1-6電池の接続",
+    "difficulty": 1,
+    "text": "起電力1.5V、内部抵抗0.5Ωの電池5個を直列接続し、外部抵抗R=10Ωを接続した。回路に流れる電流I[A]を求めよ。\n\n【ヒント】 直列接続: E合計=nE，r合計=nr，I = E合計/(R+r合計)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 E合計 = nE，r合計 = nr，I = E合計/(R + r合計)\n【代入】 E合計 = 5×1.5 = 7.5V，r合計 = 5×0.5 = 2.5Ω\n【計算】 I = 7.5/(10+2.5) = 7.5/12.5 = 0.6\n【答え】 0.6 A",
+    "tags": [
+      "第1章直流回路",
+      "1-6電池の接続"
+    ],
+    "numeric_answer": 0.6,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 0.012,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 157,
+    "category": "第1章 直流回路",
+    "chapter": "1-6電池の接続",
+    "difficulty": 1,
+    "text": "起電力2V、内部抵抗1Ωの電池4個を並列接続し、外部抵抗R=3Ωを接続した。回路に流れる電流I[A]を求めよ。\n\n【ヒント】 並列接続: E変わらず，r合成=r/n，I = E/(R+r合成)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 並列接続では起電力E不変，内部抵抗r合成 = r/n，I = E/(R + r合成)\n【代入】 r合成 = 1/4 = 0.25Ω\n【計算】 I = 2/(3+0.25) = 2/3.25 = 0.615\n【答え】 0.615 A",
+    "tags": [
+      "第1章直流回路",
+      "1-6電池の接続"
+    ],
+    "numeric_answer": 0.615,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 0.0123,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 158,
+    "category": "第1章 直流回路",
+    "chapter": "2-1電力と電力量",
+    "difficulty": 1,
+    "text": "100Vの電圧を加えたとき5Aの電流が流れる電熱器の消費電力P[W]を求めよ。\n\n【ヒント】 P = V × I",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 P = V × I\n【代入】 P = 100 × 5\n【計算】 P = 500\n【答え】 500 W",
+    "tags": [
+      "第1章直流回路",
+      "2-1電力と電力量"
+    ],
+    "numeric_answer": 500,
+    "numeric_unit": "W",
+    "numeric_tolerance_abs": 10,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 159,
+    "category": "第1章 直流回路",
+    "chapter": "2-1電力と電力量",
+    "difficulty": 1,
+    "text": "1200Wの電熱器を3時間使用したときの電力量W[kWh]を求めよ。\n\n【ヒント】 W = P × t（tの単位は時間[h]）",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = P × t\n【代入】 W = 1200W × 3h = 3600Wh\n【計算】 W = 3600Wh = 3.6 kWh\n【答え】 3.6 kWh",
+    "tags": [
+      "第1章直流回路",
+      "2-1電力と電力量"
+    ],
+    "numeric_answer": 3.6,
+    "numeric_unit": "kWh",
+    "numeric_tolerance_abs": 0.072,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 160,
+    "category": "第2章 電流と磁気",
+    "chapter": "2-1電磁力",
+    "difficulty": 1,
+    "text": "磁束密度0.5Tの磁界中に長さ0.4mの直線導体を磁界と直角に置き、5Aの電流を流した。導体に働く電磁力F[N]を求めよ。\n\n【ヒント】 F = B × I × l",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 F = B × I × l\n【代入】 F = 0.5 × 5 × 0.4\n【計算】 F = 1\n【答え】 1 N",
+    "tags": [
+      "第2章電流と磁気",
+      "2-1電磁力"
+    ],
+    "numeric_answer": 1,
+    "numeric_unit": "N",
+    "numeric_tolerance_abs": 0.02,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 161,
+    "category": "第2章 電流と磁気",
+    "chapter": "2-1電磁力",
+    "difficulty": 1,
+    "text": "磁束密度1.2Tの磁界中に長さ0.5mの導体を置き、3Aの電流を流した。導体が磁界と30°の角をなすとき、導体に働く力F[N]を求めよ。\n\n【ヒント】 F = B × I × l × sinθ",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 F = B × I × l × sinθ\n【代入】 F = 1.2 × 3 × 0.5 × sin30° = 1.2 × 3 × 0.5 × 0.5\n【計算】 F = 0.9\n【答え】 0.9 N",
+    "tags": [
+      "第2章電流と磁気",
+      "2-1電磁力"
+    ],
+    "numeric_answer": 0.9,
+    "numeric_unit": "N",
+    "numeric_tolerance_abs": 0.018,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 162,
+    "category": "第2章 電流と磁気",
+    "chapter": "2-2方形コイルに働くトルク",
+    "difficulty": 1,
+    "text": "巻数50回、面積0.02m²の方形コイルに2Aの電流を流し、磁束密度0.4Tの磁界に対して垂直に置いた。このコイルに働くトルクT[N·m]を求めよ。\n\n【ヒント】 T = N × B × I × A（磁界と垂直のとき）",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 T = N × B × I × A\n【代入】 T = 50 × 0.4 × 2 × 0.02\n【計算】 T = 0.8\n【答え】 0.8 N·m",
+    "tags": [
+      "第2章電流と磁気",
+      "2-2方形コイルに働くトルク"
+    ],
+    "numeric_answer": 0.8,
+    "numeric_unit": "N·m",
+    "numeric_tolerance_abs": 0.016,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 163,
+    "category": "第2章 電流と磁気",
+    "chapter": "3-1環状鉄心の磁気回路2",
+    "difficulty": 1,
+    "text": "環状鉄心の磁気抵抗Rm = 4×10⁵ A/Wb、磁束Φ = 2×10⁻³ Wbのとき、必要な起磁力F[A]を求めよ。\n\n【ヒント】 F = Rm × Φ（磁気回路のオームの法則）",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 F = Rm × Φ\n【代入】 F = 4×10⁵ × 2×10⁻³\n【計算】 F = 800\n【答え】 800 A",
+    "tags": [
+      "第2章電流と磁気",
+      "3-1環状鉄心の磁気回路2"
+    ],
+    "numeric_answer": 800,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 16,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 164,
+    "category": "第2章 電流と磁気",
+    "chapter": "3-1環状鉄心の磁気回路2",
+    "difficulty": 1,
+    "text": "起磁力F = 1200A、磁気抵抗Rm = 6×10⁵ A/Wbのとき、磁束Φ[Wb]を求めよ。\n\n【ヒント】 Φ = F / Rm",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Φ = F / Rm\n【代入】 Φ = 1200 / (6×10⁵)\n【計算】 Φ = 2×10⁻³\n【答え】 2×10⁻³ Wb",
+    "tags": [
+      "第2章電流と磁気",
+      "3-1環状鉄心の磁気回路2"
+    ],
+    "numeric_answer": 0.002,
+    "numeric_unit": "Wb",
+    "numeric_tolerance_abs": 0.00004,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 165,
+    "category": "第2章 電流と磁気",
+    "chapter": "3-1環状鉄心の磁気回路3",
+    "difficulty": 1,
+    "text": "比透磁率μr = 1000、断面積A = 4×10⁻⁴m²、磁路長l = 0.2mの環状鉄心の磁気抵抗Rm[A/Wb]を求めよ。（μ0 = 4π×10⁻⁷ H/m）\n\n【ヒント】 Rm = l / (μ0 × μr × A)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Rm = l / (μ0 × μr × A)\n【代入】 μ = 4π×10⁻⁷ × 1000 = 4π×10⁻⁴ H/m\n【計算】 Rm = 0.2 / (4π×10⁻⁴ × 4×10⁻⁴) = 0.2/(16π×10⁻⁸) ≈ 0.2/(5.027×10⁻⁷) ≈ 3.98×10⁵\n【答え】 約 4.0×10⁵ A/Wb",
+    "tags": [
+      "第2章電流と磁気",
+      "3-1環状鉄心の磁気回路3"
+    ],
+    "numeric_answer": 398000,
+    "numeric_unit": "A/Wb",
+    "numeric_tolerance_abs": 15920,
+    "numeric_tolerance_rel": 0.04
+  },
+  {
+    "id": 166,
+    "category": "第2章 電流と磁気",
+    "chapter": "3-1環状鉄心の磁気回路4",
+    "difficulty": 1,
+    "text": "磁束密度B = 1.2T、磁界の強さH = 1500 A/mのとき、この材料の透磁率μ[H/m]を求めよ。\n\n【ヒント】 B = μ × H → μ = B / H",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 μ = B / H\n【代入】 μ = 1.2 / 1500\n【計算】 μ = 8×10⁻⁴\n【答え】 8×10⁻⁴ H/m",
+    "tags": [
+      "第2章電流と磁気",
+      "3-1環状鉄心の磁気回路4"
+    ],
+    "numeric_answer": 0.0008,
+    "numeric_unit": "H/m",
+    "numeric_tolerance_abs": 0.000016,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 167,
+    "category": "第2章 電流と磁気",
+    "chapter": "4-2インダクタンス5",
+    "difficulty": 1,
+    "text": "2つのコイルが磁気結合している。一方のコイルの電流が0.5s間に4A変化したとき、他方のコイルに8Vの誘導起電力が生じた。相互インダクタンスM[H]を求めよ。\n\n【ヒント】 e = M × ΔI/Δt → M = e × Δt/ΔI",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 e = M × ΔI/Δt → M = e × Δt/ΔI\n【代入】 M = 8 × 0.5 / 4\n【計算】 M = 1\n【答え】 1 H",
+    "tags": [
+      "第2章電流と磁気",
+      "4-2インダクタンス5"
+    ],
+    "numeric_answer": 1,
+    "numeric_unit": "H",
+    "numeric_tolerance_abs": 0.02,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 168,
+    "category": "第2章 電流と磁気",
+    "chapter": "4-2インダクタンス5",
+    "difficulty": 1,
+    "text": "相互インダクタンスM = 0.3Hの2コイルにおいて、一方の電流が0.2s間に3A変化したとき、他方に生じる誘導起電力e[V]を求めよ。\n\n【ヒント】 e = M × ΔI/Δt",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 e = M × ΔI/Δt\n【代入】 e = 0.3 × 3/0.2\n【計算】 e = 0.3 × 15 = 4.5\n【答え】 4.5 V",
+    "tags": [
+      "第2章電流と磁気",
+      "4-2インダクタンス5"
+    ],
+    "numeric_answer": 4.5,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 0.09,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 169,
+    "category": "第2章 電流と磁気",
+    "chapter": "4-3電磁エネルギー",
+    "difficulty": 1,
+    "text": "自己インダクタンスL = 0.5Hのコイルに4Aの電流が流れているとき、コイルに蓄えられる電磁エネルギーW[J]を求めよ。\n\n【ヒント】 W = (1/2) × L × I²",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = (1/2) × L × I²\n【代入】 W = 0.5 × 0.5 × 4²\n【計算】 W = 0.5 × 0.5 × 16 = 4\n【答え】 4 J",
+    "tags": [
+      "第2章電流と磁気",
+      "4-3電磁エネルギー"
+    ],
+    "numeric_answer": 4,
+    "numeric_unit": "J",
+    "numeric_tolerance_abs": 0.08,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 170,
+    "category": "第2章 電流と磁気",
+    "chapter": "4-3電磁エネルギー",
+    "difficulty": 2,
+    "text": "自己インダクタンスL = 2Hのコイルに800Jの電磁エネルギーを蓄えるには、何Aの電流を流せばよいか。\n\n【ヒント】 W = (1/2)LI² → I = √(2W/L)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = (1/2)LI² → I = √(2W/L)\n【代入】 I = √(2×800/2) = √800\n【計算】 √800 = 20√2 ≈ 28.3\n【答え】 28.3 A",
+    "tags": [
+      "第2章電流と磁気",
+      "4-3電磁エネルギー"
+    ],
+    "numeric_answer": 28.3,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 0.566,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 171,
+    "category": "第2章 電流と磁気",
+    "chapter": "4-3電磁エネルギー",
+    "difficulty": 2,
+    "text": "L1=2H、L2=1H、相互インダクタンスM=0.8Hで結合したコイルにI1=3A、I2=2Aを流した（磁束が強め合う方向）。系全体に蓄えられる電磁エネルギーW[J]を求めよ。\n\n【ヒント】 W = (1/2)L1I1² + (1/2)L2I2² + MI1I2",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = (1/2)L1I1² + (1/2)L2I2² + M×I1×I2\n【代入】 W = 0.5×2×9 + 0.5×1×4 + 0.8×3×2\n【計算】 W = 9 + 2 + 4.8 = 15.8\n【答え】 15.8 J",
+    "tags": [
+      "第2章電流と磁気",
+      "4-3電磁エネルギー"
+    ],
+    "numeric_answer": 15.8,
+    "numeric_unit": "J",
+    "numeric_tolerance_abs": 0.316,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 172,
+    "category": "第3章 静電気",
+    "chapter": "1-1静電現象のあらまし",
+    "difficulty": 1,
+    "text": "真空中で2×10⁻⁶Cと4×10⁻⁶Cの点電荷が0.1m離れている。両者間に働くクーロン力F[N]を求めよ。（k = 9×10⁹ N·m²/C²）\n\n【ヒント】 F = k × Q1 × Q2 / r²",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 F = k × Q1 × Q2 / r²\n【代入】 F = 9×10⁹ × 2×10⁻⁶ × 4×10⁻⁶ / (0.1)²\n【計算】 F = 9×10⁹ × 8×10⁻¹² / 0.01 = 72×10⁻³ / 0.01 = 7.2\n【答え】 7.2 N",
+    "tags": [
+      "第3章静電気",
+      "1-1静電現象のあらまし"
+    ],
+    "numeric_answer": 7.2,
+    "numeric_unit": "N",
+    "numeric_tolerance_abs": 0.144,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 173,
+    "category": "第3章 静電気",
+    "chapter": "1-1静電現象のあらまし",
+    "difficulty": 1,
+    "text": "真空中で2つの点電荷間に働くクーロン力が18Nであった。距離を3倍にしたとき、力F[N]はいくらになるか。\n\n【ヒント】 F ∝ 1/r²（距離がn倍になると力は1/n²倍）",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 F ∝ 1/r²（距離がn倍になると力は1/n²倍）\n【代入】 距離3倍 → 力は1/3² = 1/9倍\n【計算】 F = 18 × (1/9) = 2\n【答え】 2 N",
+    "tags": [
+      "第3章静電気",
+      "1-1静電現象のあらまし"
+    ],
+    "numeric_answer": 2,
+    "numeric_unit": "N",
+    "numeric_tolerance_abs": 0.04,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 174,
+    "category": "第3章 静電気",
+    "chapter": "1-3電位と静電容量",
+    "difficulty": 1,
+    "text": "真空中に4×10⁻⁸Cの点電荷がある。この点電荷から0.2m離れた点の電位V[V]を求めよ。（k = 9×10⁹ N·m²/C²）\n\n【ヒント】 V = k × Q / r",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 V = k × Q / r\n【代入】 V = 9×10⁹ × 4×10⁻⁸ / 0.2\n【計算】 V = 360 / 0.2 = 1800\n【答え】 1800 V",
+    "tags": [
+      "第3章静電気",
+      "1-3電位と静電容量"
+    ],
+    "numeric_answer": 1800,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 36,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 175,
+    "category": "第3章 静電気",
+    "chapter": "1-3電位と静電容量",
+    "difficulty": 1,
+    "text": "コンデンサに1000Vの電圧を加えたとき5×10⁻⁴Cの電荷が蓄えられた。この静電容量C[μF]を求めよ。\n\n【ヒント】 C = Q / V",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 C = Q / V\n【代入】 C = 5×10⁻⁴ / 1000 = 5×10⁻⁷ F\n【計算】 C = 0.5×10⁻⁶ F = 0.5 μF\n【答え】 0.5 μF",
+    "tags": [
+      "第3章静電気",
+      "1-3電位と静電容量"
+    ],
+    "numeric_answer": 0.5,
+    "numeric_unit": "μF",
+    "numeric_tolerance_abs": 0.01,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 176,
+    "category": "第3章 静電気",
+    "chapter": "1-3電位と静電容量",
+    "difficulty": 1,
+    "text": "比誘電率εr = 2.0、電極面積A = 100cm²、電極間距離d = 1mmの平行板コンデンサの静電容量C[pF]を求めよ。（ε0 = 8.85×10⁻¹² F/m）\n\n【ヒント】 C = ε0 × εr × A / d",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 C = ε0 × εr × A / d\n【代入】 A = 100cm² = 0.01m²，d = 1mm = 10⁻³m\n【計算】 C = 8.85×10⁻¹² × 2 × 0.01 / 10⁻³ = 8.85×10⁻¹² × 20 = 177×10⁻¹² F = 177 pF\n【答え】 177 pF",
+    "tags": [
+      "第3章静電気",
+      "1-3電位と静電容量"
+    ],
+    "numeric_answer": 177,
+    "numeric_unit": "pF",
+    "numeric_tolerance_abs": 3.54,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 177,
+    "category": "第3章 静電気",
+    "chapter": "2-2コンデンサの接続",
+    "difficulty": 1,
+    "text": "3μFと6μFのコンデンサを直列接続したときの合成静電容量C[μF]を求めよ。\n\n【ヒント】 C = C1C2/(C1+C2)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 C = C1C2/(C1+C2)（直列）\n【代入】 C = (3×6)/(3+6) = 18/9\n【計算】 C = 2\n【答え】 2 μF",
+    "tags": [
+      "第3章静電気",
+      "2-2コンデンサの接続"
+    ],
+    "numeric_answer": 2,
+    "numeric_unit": "μF",
+    "numeric_tolerance_abs": 0.04,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 178,
+    "category": "第3章 静電気",
+    "chapter": "2-2コンデンサの接続",
+    "difficulty": 1,
+    "text": "4μF、8μF、12μFの3つのコンデンサを並列接続したときの合成静電容量C[μF]を求めよ。\n\n【ヒント】 並列: C = C1 + C2 + C3",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 C = C1 + C2 + C3（並列）\n【代入】 C = 4 + 8 + 12\n【計算】 C = 24\n【答え】 24 μF",
+    "tags": [
+      "第3章静電気",
+      "2-2コンデンサの接続"
+    ],
+    "numeric_answer": 24,
+    "numeric_unit": "μF",
+    "numeric_tolerance_abs": 0.48,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 179,
+    "category": "第3章 静電気",
+    "chapter": "2-2コンデンサの接続",
+    "difficulty": 1,
+    "text": "4μFと2μFのコンデンサを直列接続して100Vを加えた。2μFのコンデンサにかかる電圧V2[V]を求めよ。\n\n【ヒント】 直列では電荷が等しい: Q = C合成×V，V2 = Q/C2",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 直列では蓄積電荷が等しい\n【計算】 C合成 = (4×2)/(4+2) = 4/3 μF，Q = (4/3)×10⁻⁶×100 = 4/3×10⁻⁴ C\nV2 = Q/C2 = (4/3×10⁻⁴)/(2×10⁻⁶) = 200/3 ≈ 66.7\n【答え】 66.7 V",
+    "tags": [
+      "第3章静電気",
+      "2-2コンデンサの接続"
+    ],
+    "numeric_answer": 66.7,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 1.334,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 180,
+    "category": "第3章 静電気",
+    "chapter": "2-2コンデンサの接続",
+    "difficulty": 1,
+    "text": "10μFと20μFのコンデンサを直列接続して150Vを加えた。各コンデンサに蓄えられる電荷Q[μC]を求めよ。\n\n【ヒント】 Q = C合成 × V，直列なので両コンデンサの電荷は同じ",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Q = C合成 × V\n【計算】 C合成 = (10×20)/(10+20) = 20/3 μF\nQ = (20/3)×10⁻⁶×150 = 1000×10⁻⁶ C = 1000 μC\n【答え】 1000 μC",
+    "tags": [
+      "第3章静電気",
+      "2-2コンデンサの接続"
+    ],
+    "numeric_answer": 1000,
+    "numeric_unit": "μC",
+    "numeric_tolerance_abs": 20,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 181,
+    "category": "第3章 静電気",
+    "chapter": "2-3誘電体内のエネルギー",
+    "difficulty": 1,
+    "text": "電荷Q = 6×10⁻⁴Cのコンデンサに100Vの電圧が加わっている。このコンデンサに蓄えられるエネルギーW[J]を求めよ。\n\n【ヒント】 W = Q × V / 2",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = Q × V / 2\n【代入】 W = 6×10⁻⁴ × 100 / 2\n【計算】 W = 0.03\n【答え】 0.03 J",
+    "tags": [
+      "第3章静電気",
+      "2-3誘電体内のエネルギー"
+    ],
+    "numeric_answer": 0.03,
+    "numeric_unit": "J",
+    "numeric_tolerance_abs": 0.0006,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 182,
+    "category": "第3章 静電気",
+    "chapter": "2-3誘電体内のエネルギー",
+    "difficulty": 1,
+    "text": "5μFのコンデンサに200Vの電圧を加えたとき蓄えられるエネルギーW[J]を求めよ。\n\n【ヒント】 W = (1/2) × C × V²",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = (1/2) × C × V²\n【代入】 W = 0.5 × 5×10⁻⁶ × 200²\n【計算】 W = 0.5 × 5×10⁻⁶ × 40000 = 0.1\n【答え】 0.1 J",
+    "tags": [
+      "第3章静電気",
+      "2-3誘電体内のエネルギー"
+    ],
+    "numeric_answer": 0.1,
+    "numeric_unit": "J",
+    "numeric_tolerance_abs": 0.002,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 183,
+    "category": "第3章 静電気",
+    "chapter": "2-3誘電体内のエネルギー",
+    "difficulty": 1,
+    "text": "静電容量10μFのコンデンサに蓄えられている電荷が2×10⁻³Cのとき、蓄えられているエネルギーW[J]を求めよ。\n\n【ヒント】 W = Q² / (2C)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 W = Q² / (2C)\n【代入】 W = (2×10⁻³)² / (2 × 10×10⁻⁶)\n【計算】 W = 4×10⁻⁶ / (20×10⁻⁶) = 0.2\n【答え】 0.2 J",
+    "tags": [
+      "第3章静電気",
+      "2-3誘電体内のエネルギー"
+    ],
+    "numeric_answer": 0.2,
+    "numeric_unit": "J",
+    "numeric_tolerance_abs": 0.004,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 184,
+    "category": "第3章 静電気",
+    "chapter": "2-3誘電体内のエネルギー",
+    "difficulty": 2,
+    "text": "電界の強さE = 5×10³V/m、比誘電率εr = 2の誘電体に蓄えられるエネルギー密度w[J/m³]を求めよ。（ε0 = 8.85×10⁻¹² F/m）\n\n【ヒント】 w = ε0 × εr × E² / 2",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 w = ε0 × εr × E² / 2\n【代入】 w = 8.85×10⁻¹² × 2 × (5×10³)² / 2\n【計算】 w = 8.85×10⁻¹² × 25×10⁶ = 221.25×10⁻⁶ ≈ 2.21×10⁻⁴\n【答え】 2.21×10⁻⁴ J/m³",
+    "tags": [
+      "第3章静電気",
+      "2-3誘電体内のエネルギー"
+    ],
+    "numeric_answer": 0.000221,
+    "numeric_unit": "J/m³",
+    "numeric_tolerance_abs": 0.00000884,
+    "numeric_tolerance_rel": 0.04
+  },
+  {
+    "id": 185,
+    "category": "第4章 交流回路",
+    "chapter": "1-1正弦波交流",
+    "difficulty": 1,
+    "text": "正弦波交流電圧の最大値が170Vのとき、実効値V[V]を求めよ。\n\n【ヒント】 V = Vm / √2",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 V = Vm / √2\n【代入】 V = 170 / √2 = 170 / 1.414\n【計算】 V ≈ 120.2\n【答え】 約120 V",
+    "tags": [
+      "第4章交流回路",
+      "1-1正弦波交流"
+    ],
+    "numeric_answer": 120.2,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 2.404,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 186,
+    "category": "第4章 交流回路",
+    "chapter": "1-1正弦波交流",
+    "difficulty": 1,
+    "text": "最大値Em = 314Vの正弦波交流の平均値Eav[V]を求めよ。\n\n【ヒント】 Eav = (2/π) × Em",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Eav = (2/π) × Em\n【代入】 Eav = (2/π) × 314\n【計算】 Eav = 0.6366 × 314 ≈ 200\n【答え】 200 V",
+    "tags": [
+      "第4章交流回路",
+      "1-1正弦波交流"
+    ],
+    "numeric_answer": 200,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 4,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 187,
+    "category": "第4章 交流回路",
+    "chapter": "1-1正弦波交流",
+    "difficulty": 1,
+    "text": "実効値100V、平均値63.7Vの交流電圧の波形率を求めよ。\n\n【ヒント】 波形率 = 実効値 / 平均値",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 波形率 = 実効値 / 平均値\n【代入】 波形率 = 100 / 63.7\n【計算】 波形率 ≈ 1.11\n【答え】 1.11（正弦波の波形率）",
+    "tags": [
+      "第4章交流回路",
+      "1-1正弦波交流"
+    ],
+    "numeric_answer": 1.11,
+    "numeric_unit": "",
+    "numeric_tolerance_abs": 0.022,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 188,
+    "category": "第4章 交流回路",
+    "chapter": "1-2角周波数",
+    "difficulty": 1,
+    "text": "周波数60Hzの交流の角周波数ω[rad/s]を求めよ。\n\n【ヒント】 ω = 2π × f",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 ω = 2π × f\n【代入】 ω = 2π × 60 = 120π\n【計算】 ω ≈ 377\n【答え】 377 rad/s",
+    "tags": [
+      "第4章交流回路",
+      "1-2角周波数"
+    ],
+    "numeric_answer": 376.8,
+    "numeric_unit": "rad/s",
+    "numeric_tolerance_abs": 7.536,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 189,
+    "category": "第4章 交流回路",
+    "chapter": "1-2角周波数",
+    "difficulty": 1,
+    "text": "周期T = 0.02sの交流の周波数f[Hz]を求めよ。また角周波数ω[rad/s]も求めよ。\n\n【ヒント】 f = 1/T，ω = 2πf",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 f = 1/T，ω = 2πf\n【代入】 f = 1/0.02 = 50 Hz\n【計算】 ω = 2π × 50 = 100π ≈ 314\n【答え】 f = 50 Hz，ω = 314 rad/s",
+    "tags": [
+      "第4章交流回路",
+      "1-2角周波数"
+    ],
+    "numeric_answer": 50,
+    "numeric_unit": "Hz ω=314rad/s",
+    "numeric_tolerance_abs": 1,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 190,
+    "category": "第4章 交流回路",
+    "chapter": "1-2角周波数",
+    "difficulty": 1,
+    "text": "角周波数ω = 628 rad/sの交流の周波数f[Hz]を求めよ。\n\n【ヒント】 f = ω / (2π)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 f = ω / (2π)\n【代入】 f = 628 / (2π) = 628 / 6.283\n【計算】 f ≈ 100\n【答え】 100 Hz",
+    "tags": [
+      "第4章交流回路",
+      "1-2角周波数"
+    ],
+    "numeric_answer": 100,
+    "numeric_unit": "Hz",
+    "numeric_tolerance_abs": 2,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 191,
+    "category": "第4章 交流回路",
+    "chapter": "2-1位相差とベクトル",
+    "difficulty": 1,
+    "text": "e1 = 100sin(100πt + π/6) V と e2 = 100sin(100πt - π/3) V の位相差[rad]を求めよ。e1はe2より何rad進んでいるか。\n\n【ヒント】 位相差 = e1の位相角 - e2の位相角",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 位相差 = φ1 - φ2\n【代入】 位相差 = π/6 - (-π/3) = π/6 + π/3 = π/6 + 2π/6 = 3π/6 = π/2\n【計算】 π/2 ≈ 1.57\n【答え】 π/2 rad ≈ 1.57 rad（e1がe2より π/2 rad 進む）",
+    "tags": [
+      "第4章交流回路",
+      "2-1位相差とベクトル"
+    ],
+    "numeric_answer": 1.5708,
+    "numeric_unit": "rad",
+    "numeric_tolerance_abs": 0.03142,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 192,
+    "category": "第4章 交流回路",
+    "chapter": "2-1位相差とベクトル",
+    "difficulty": 1,
+    "text": "v1 = 80sinωt V と v2 = 60sin(ωt + π/2) V を重ね合わせた合成電圧の最大値Vm[V]を求めよ。\n\n【ヒント】 2つの電圧が90°の位相差のとき Vm = √(V1m² + V2m²)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 2つの電圧が90°の位相差のとき Vm = √(V1m² + V2m²)\n【代入】 Vm = √(80² + 60²) = √(6400 + 3600) = √10000\n【計算】 Vm = 100\n【答え】 100 V",
+    "tags": [
+      "第4章交流回路",
+      "2-1位相差とベクトル"
+    ],
+    "numeric_answer": 100,
+    "numeric_unit": "V",
+    "numeric_tolerance_abs": 2,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 193,
+    "category": "第4章 交流回路",
+    "chapter": "2-4並列回路3",
+    "difficulty": 1,
+    "text": "R=10Ω、L=50mH、C=200μFのRLC並列回路の共振周波数f0[Hz]を求めよ。\n\n【ヒント】 f0 = 1 / (2π√(LC))",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 f0 = 1 / (2π√(LC))\n【代入】 LC = 0.05 × 200×10⁻⁶ = 10⁻⁵\n【計算】 √(10⁻⁵) = 3.162×10⁻³，f0 = 1/(2π×3.162×10⁻³) = 1/0.01987 ≈ 50.3\n【答え】 50.3 Hz",
+    "tags": [
+      "第4章交流回路",
+      "2-4並列回路3"
+    ],
+    "numeric_answer": 50.3,
+    "numeric_unit": "Hz",
+    "numeric_tolerance_abs": 1.006,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 194,
+    "category": "第4章 交流回路",
+    "chapter": "2-4並列回路3",
+    "difficulty": 1,
+    "text": "R=100Ωの抵抗とL,Cを並列接続したRLC回路に電圧E=200Vを加えた。共振時の回路電流I[A]を求めよ。（並列共振では合成インピーダンスが最大となりZ=Rとなる）\n\n【ヒント】 共振時 Z = R，I = E/R",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 並列共振時 Z = R（最大），I = E/Z = E/R\n【代入】 I = 200/100\n【計算】 I = 2\n【答え】 2 A",
+    "tags": [
+      "第4章交流回路",
+      "2-4並列回路3"
+    ],
+    "numeric_answer": 2,
+    "numeric_unit": "A",
+    "numeric_tolerance_abs": 0.04,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 195,
+    "category": "第4章 交流回路",
+    "chapter": "2-4並列回路3",
+    "difficulty": 2,
+    "text": "R=20Ω、XL=15Ω、XC=30ΩのRLC並列回路のアドミタンスY[S]を求めよ。\n\n【ヒント】 G=1/R，BL=1/XL，BC=1/XC，B=BL-BC，Y=√(G²+B²)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 G=1/R，BL=1/XL，BC=1/XC，B=BL-BC，Y=√(G²+B²)\n【代入】 G=1/20=0.05，BL=1/15≈0.0667，BC=1/30≈0.0333\nB = 0.0667-0.0333 = 0.0333\n【計算】 Y = √(0.05²+0.0333²) = √(0.0025+0.00111) = √0.00361 ≈ 0.0601\n【答え】 0.0601 S",
+    "tags": [
+      "第4章交流回路",
+      "2-4並列回路3"
+    ],
+    "numeric_answer": 0.0601,
+    "numeric_unit": "S",
+    "numeric_tolerance_abs": 0.0012,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 196,
+    "category": "第4章 交流回路",
+    "chapter": "2-4並列回路3",
+    "difficulty": 2,
+    "text": "L=0.1H、C=100μF、R=1000ΩのRLC並列共振回路の先鋭度Q（クオリティファクタ）を求めよ。\n\n【ヒント】 ω0=1/√(LC)，Q = R/(ω0L)",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 ω0 = 1/√(LC)，Q = R/(ω0L)\n【代入】 ω0 = 1/√(0.1×100×10⁻⁶) = 1/√(10⁻⁵) = 1/(3.162×10⁻³) ≈ 316 rad/s\n【計算】 Q = 1000/(316×0.1) = 1000/31.6 ≈ 31.6\n【答え】 31.6",
+    "tags": [
+      "第4章交流回路",
+      "2-4並列回路3"
+    ],
+    "numeric_answer": 31.6,
+    "numeric_unit": "",
+    "numeric_tolerance_abs": 0.632,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 197,
+    "category": "第4章 交流回路",
+    "chapter": "3-2皮相、有効、無効電力",
+    "difficulty": 1,
+    "text": "電圧220V、電流10A、力率cosθ = 0.8の負荷の有効電力P[W]を求めよ。\n\n【ヒント】 P = V × I × cosθ",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 P = V × I × cosθ\n【代入】 P = 220 × 10 × 0.8\n【計算】 P = 1760\n【答え】 1760 W",
+    "tags": [
+      "第4章交流回路",
+      "3-2皮相、有効、無効電力"
+    ],
+    "numeric_answer": 1760,
+    "numeric_unit": "W",
+    "numeric_tolerance_abs": 35.2,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 198,
+    "category": "第4章 交流回路",
+    "chapter": "3-2皮相、有効、無効電力",
+    "difficulty": 1,
+    "text": "電圧100V、電流5A、力率cosθ = 0.6の回路の無効電力Q[var]を求めよ。\n\n【ヒント】 sinθ = √(1-cos²θ)，Q = V × I × sinθ",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 Q = V × I × sinθ\n【代入】 sinθ = √(1-0.6²) = √(0.64) = 0.8\nQ = 100 × 5 × 0.8\n【計算】 Q = 400\n【答え】 400 var",
+    "tags": [
+      "第4章交流回路",
+      "3-2皮相、有効、無効電力"
+    ],
+    "numeric_answer": 400,
+    "numeric_unit": "var",
+    "numeric_tolerance_abs": 8,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 199,
+    "category": "第4章 交流回路",
+    "chapter": "3-2皮相、有効、無効電力",
+    "difficulty": 1,
+    "text": "ある負荷の有効電力P = 3000W、無効電力Q = 4000varのとき、力率cosθを求めよ。\n\n【ヒント】 S = √(P²+Q²)，cosθ = P/S",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 S = √(P²+Q²)，cosθ = P/S\n【代入】 S = √(3000²+4000²) = √(9000000+16000000) = √25000000 = 5000 VA\n【計算】 cosθ = 3000/5000 = 0.6\n【答え】 cosθ = 0.6",
+    "tags": [
+      "第4章交流回路",
+      "3-2皮相、有効、無効電力"
+    ],
+    "numeric_answer": 0.6,
+    "numeric_unit": "",
+    "numeric_tolerance_abs": 0.012,
+    "numeric_tolerance_rel": 0.02
+  },
+  {
+    "id": 200,
+    "category": "第4章 交流回路",
+    "chapter": "3-2皮相、有効、無効電力",
+    "difficulty": 1,
+    "text": "電圧E = 200V、電流I = 12A、力率cosθ = 0.75の回路について、有効電力P[W]、皮相電力S[VA]、無効電力Q[var]をそれぞれ求めよ。\n\n【ヒント】 P=VIcosθ，S=VI，sinθ=√(1-cos²θ)，Q=VIsinθ",
+    "question_type": "numeric",
+    "choices": [],
+    "answer": 0,
+    "explanation": "【公式】 P=VIcosθ，S=VI，Q=VIsinθ\n【代入】 P=200×12×0.75=1800W，S=200×12=2400VA\nsinθ=√(1-0.75²)=√0.4375≈0.661，Q=200×12×0.661≈1587\n【計算】 P=1800W，S=2400VA，Q≈1587var\n【答え】 P=1800W，S=2400VA，Q=1587var",
+    "tags": [
+      "第4章交流回路",
+      "3-2皮相、有効、無効電力"
+    ],
+    "numeric_answer": 1800,
+    "numeric_unit": "W S=2400VA Q=1587var",
+    "numeric_tolerance_abs": 36,
+    "numeric_tolerance_rel": 0.02
   }
 ]

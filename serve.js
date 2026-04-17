@@ -18,7 +18,7 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  const url = req.url === '/' ? '/index.html' : req.url;
+  const url = decodeURIComponent(req.url === '/' ? '/index.html' : req.url);
 
   // public/ を優先（Vite の挙動に合わせる）、次にルート
   const candidates = [
